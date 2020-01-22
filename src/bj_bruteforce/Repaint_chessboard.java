@@ -14,7 +14,7 @@ public class Repaint_chessboard {
 		int width = sc.nextInt();
 		int height = sc.nextInt();
 		
-		int ground = width * height;
+		int ground = width * height * width;
 		
 		String[] gnd = new String[width];
 		

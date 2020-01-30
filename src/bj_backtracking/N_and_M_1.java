@@ -1,5 +1,6 @@
 package bj_backtracking;
 
+//BOJ 15649
 import java.util.Scanner;
 
 public class N_and_M_1 {

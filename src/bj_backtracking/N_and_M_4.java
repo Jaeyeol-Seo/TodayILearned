@@ -1,15 +1,15 @@
 package bj_backtracking;
 
-//BOJ 15650
+//BOJ 15652
 import java.util.Scanner;
 
-public class N_and_M_2 {
+public class N_and_M_4 {
 
 	public static StringBuilder sb = new StringBuilder();
 	public static int[] arr;
 	public static boolean[] visited;
 	public static int lastnum, length;
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
@@ -34,13 +34,15 @@ public class N_and_M_2 {
 			sb.append(System.lineSeparator());
 			return;
 		}
-		for (int i = index + 1 ; i <= lastnum; i++) {
-			if (!visited[i]) {
-				visited[i] = true;
-				arr[start] = i;
-				backtracking(i, start + 1);
-				visited[i] = false;
-			}
+		for (int i = 1; i <= lastnum; i++) {
+//			if (!visited[i]) {
+			if (start != 0 && arr[start - 1] > i)
+				continue;
+//				visited[i] = true;
+			arr[start] = i;
+			backtracking(i, start + 1);
+//				visited[i] = false;
+
 		}
 		return;
 	}

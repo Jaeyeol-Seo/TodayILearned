@@ -1,9 +1,9 @@
 package bj_backtracking;
 
-//BOJ 15650
+//BOJ 15651
 import java.util.Scanner;
 
-public class N_and_M_2 {
+public class N_and_M_3 {
 
 	public static StringBuilder sb = new StringBuilder();
 	public static int[] arr;
@@ -34,9 +34,9 @@ public class N_and_M_2 {
 			sb.append(System.lineSeparator());
 			return;
 		}
-		for (int i = index + 1 ; i <= lastnum; i++) {
+		for (int i = 1 ; i <= lastnum; i++) {
 			if (!visited[i]) {
-				visited[i] = true;
+//				visited[i] = true;
 				arr[start] = i;
 				backtracking(i, start + 1);
 				visited[i] = false;

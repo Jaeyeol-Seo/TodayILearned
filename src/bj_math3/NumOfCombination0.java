@@ -1,6 +1,6 @@
 package bj_math3;
 
-import java.math.BigInteger;
+//BOJ 2004
 import java.util.Scanner;
 
 public class NumOfCombination0 {
@@ -9,28 +9,34 @@ public class NumOfCombination0 {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		
-		int a = sc.nextInt();
-		int b = sc.nextInt();
+		long a = sc.nextInt();
+		long b = sc.nextInt();
+		long c = a - b;
 		
-		int cnt = 0;
-		long combination = 1;
+		long five = fivecnt(a) - fivecnt(b) - fivecnt(c);
+		long two = twocnt(a) - twocnt(b) - twocnt(c);
 		
-		for(int i = 0 ; i < b ; i++) {
-			combination *= ((a - i) / ((b - i) * ((a - b) - i))); 
+		System.out.println(five >= two ? five : two);
+		
+		
+	}	
+	public static long fivecnt(long a) {
+		long cnt5 = 0;
+		
+		for (long i = 5; i <= a; i *= 5) {
+			cnt5 += a / i;
 		}
 		
-		System.out.println(combination);
+		return cnt5;
+	}
+	public static long twocnt(long a) {
+		long cnt2 = 0;
 		
-		String strcom = String.valueOf(combination);
-		char[] arrstcom = strcom.toCharArray();
-		for (int i = arrstcom.length - 1 ; i >= 0 ; i++) {
-			if ( arrstcom[i] == '0') {
-				cnt++;
-			} else {
-				System.out.println(cnt);
-				return;
-			}
+		for (long i = 2; i <= a; i *= 2) {
+			cnt2 += a / i;
 		}
+		
+		return cnt2;
 	}
 
 }

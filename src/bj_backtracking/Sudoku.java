@@ -4,17 +4,21 @@ package bj_backtracking;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+class xy {
+	int x, y;
+	
+	public xy(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
 public class Sudoku {
 
 	public static int[][] sudokuboard = new int[9][9];
-	public int x, y;
-	public static ArrayList<Sudoku> arr = new ArrayList<>();
+	public static int x, y;
+	public static ArrayList<xy> arr = new ArrayList<>();
 
-	Sudoku(int x, int y) {
-		this.x = x;
-		this.y = y;
-		return;
-	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -24,7 +28,7 @@ public class Sudoku {
 			for (int j = 0; j < 9; j++) {
 				sudokuboard[i][j] = sc.nextInt();
 				if (sudokuboard[i][j] == 0) {
-					arr.add(new Sudoku(i, j));
+					arr.add(new xy(i, j));
 				}
 			}
 		}
@@ -32,7 +36,7 @@ public class Sudoku {
 		resolve(arr, 0);
 	}
 
-	public static void resolve(ArrayList<Sudoku> node, int index) {
+	public static void resolve(ArrayList<xy> node, int index) {
 		if (index == arr.size()) {
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
@@ -61,7 +65,7 @@ public class Sudoku {
 	}
 
 	// 스도쿠에서 빈칸이 포함되어 있는 가로행에 중복검사
-	static boolean checkRow(ArrayList<Sudoku> arr, int idx, int pro) {
+	static boolean checkRow(ArrayList<xy> arr, int idx, int pro) {
 
 		for (int i = 0; i < 9; i++) { // 가로행의 0~8번 인덱스를 검사
 			if (arr.get(idx).y == i)
@@ -76,7 +80,7 @@ public class Sudoku {
 	}
 
 	// 스도쿠에서 빈칸이 포함되어 있는 세로열에 중복검사
-	static boolean checkCol(ArrayList<Sudoku> arr, int idx, int pro) {
+	static boolean checkCol(ArrayList<xy> arr, int idx, int pro) {
 
 		for (int i = 0; i < 9; i++) { // 세로 열의 0~8번 인덱스를 검사
 			if (arr.get(idx).x == i)
@@ -91,7 +95,7 @@ public class Sudoku {
 	}
 
 	// 스도쿠에서 빈칸이 포함되어 있는 3x3박스의 중복검사
-	static boolean checkBox(ArrayList<Sudoku> arr, int idx, int pro) {
+	static boolean checkBox(ArrayList<xy> arr, int idx, int pro) {
 
 		// (0,0)이 빈칸인 경우, (0,0) ~ (2,2)를 검사해야 한다.
 		// (1,4)가 빈칸인 경우, (0,3) ~ (2,5)를 검사해야 한다.

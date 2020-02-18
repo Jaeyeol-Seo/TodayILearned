@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class CoordinateSort {
+public class CoordinateSort2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -24,11 +24,11 @@ public class CoordinateSort {
 			@Override
 			public int compare(int[] o1, int[] o2) {
 				// TODO Auto-generated method stub
-				if(o1[0] == o2[0]) {
-					return Integer.compare(o1[1], o2[1]);
+				if(o1[1] == o2[1]) {
+					return Integer.compare(o1[0], o2[0]);
 				}
 				
-				return Integer.compare(o1[0], o2[0]);
+				return Integer.compare(o1[1], o2[1]);
 			}
 			
 		});

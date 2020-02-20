@@ -1,7 +1,10 @@
 package bj_String;
 
-import java.util.Arrays;
+//BOJ 1764
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class DontSeeDontListen {
 
@@ -9,30 +12,34 @@ public class DontSeeDontListen {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
+		Map<String, Integer> hs = new HashMap<>();
 		
 		int listen = sc.nextInt();
 		int see = sc.nextInt();
 		
 		int cnt = 0;
 		
-		String[] dontlisten = new String[listen];
-		String[] dontsee = new String[see];
 		for(int i = 0 ; i < listen ; i++) { 
-			dontlisten[i] = sc.next();
+			String s = sc.next();
+			hs.put(s, 0);
 		}
 		
 		for(int i = 0 ; i < see ; i++) {
-			dontsee[i] = sc.next();
+			String s = sc.next();
+			if(hs.containsKey(s)) {
+				hs.put(s, hs.get(s) + 1);
+			}
 		}
 		
-		Arrays.sort(dontsee);
+		TreeMap<String, Integer> tm = new TreeMap<>(hs);
 		
-		for(String j : dontlisten) {
-			if ( j.equals(dontsee)) {
-				sb.append(dontsee + System.lineSeparator());
+		for(String i : tm.keySet()) {
+			if(tm.get(i) != 0) {
+				sb.append(i + System.lineSeparator());
 				cnt++;
 			}
 		}
+		
 		System.out.println(cnt);
 		System.out.println(sb);
 	}

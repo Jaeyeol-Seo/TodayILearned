@@ -1,6 +1,5 @@
 package bj_DP;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class CardBuy {
